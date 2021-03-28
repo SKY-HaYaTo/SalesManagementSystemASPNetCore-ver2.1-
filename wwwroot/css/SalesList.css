@@ -1,0 +1,43 @@
+﻿body {
+}
+
+table {
+    width:150%; /*幅設定*/
+    border-collapse: collapse;
+    /*display: block;*/
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+.salesResultClass {
+    border:solid;
+    border-color:#000000;
+}
+
+.salesResultHeadClass {
+    border: solid;
+    border-color: #000000;
+}
+
+th, td {
+    border: 1px solid #333;
+    text-align: center; /* 左右中央揃え */
+    vertical-align: middle; /* 上下中央揃え */
+}
+
+#bushoMei, #post, #postAddress, #tel, #fax, #email, #orderId,
+#orderDate, #deliveryDate {
+    visibility: collapse;
+}
+
+/*表の項目(thタグ)の列幅を自動レイアウト設定*/
+#kaishaMei, #total, #order1, #order2, #order3, #order4, #order5 {
+    table-layout: auto; 
+}
+
+/*詳細・更新・削除ボタンのヘッダーの設定*/
+#detailBtnTh, #updateBtnTh, #deleteBtnTh {
+    width:3%;
+    background-color:lightgray;
+}
+
