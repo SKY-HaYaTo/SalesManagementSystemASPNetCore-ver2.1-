@@ -1,0 +1,58 @@
+﻿body {
+}
+
+/*<form>タグの設定*/
+#orderFormId {
+    border:solid;
+    border-color:#000000;
+}
+
+/*【重要】大枠の<div>タグのClassに「clearfix」を付けて設定を簡素化する。*/
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.labelArea {
+    float: left;
+    width: 20%; /* 要素の幅を50%に定義 */
+    background-color: lightgray; /* 視覚化のための背景色 */
+}
+
+.clientIdInputArea {
+    width: 50%; /* 要素の幅を50%に定義 */
+}
+
+/*購入品目1-5の<fieldset>の設定*/
+.clientIdAreaClass, .clientNameAreaClass, .departmentAreaClass, .postAreaClass,
+.postAddressClass, .telClass, .faxClass, .emailClass, .orderGroup, .orderDateClass,
+.deliveryDateClass, .totalClass {
+    margin: 10px; /*行間を5px空ける*/
+}
+
+/*会社名入力欄の設定*/
+#clientNameInput, #departmentInput {
+    width: 50%;
+}
+
+/*住所入力欄の設定*/
+#postAddressInput {
+    width:60%;
+}
+
+/*TELとFax入力欄の設定*/
+#telInput, #faxInput {
+    width:30%;
+}
+
+/*E-mail入力欄の設定*/
+#emailInput {
+    width: 40%;
+}
+
+/*購入品目名1-5欄の設定*/
+#order1Input, #order2Input, #order3Input,
+#order4Input, #order5Input {
+    width:50%;
+}
