@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>詳細画面</title>
+    <!--共通ライブラリ-->
+    <link rel="stylesheet" href="../lib/bootstrap/bootstrap.min.css" />
+    <script type="text/javascript" src="../lib/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/jqueryui/jquery-ui.min.js"></script>
+
+    <!--個別ファイル-->
+    <link rel="stylesheet" href="../css/Detail.css" />
+    <script type="text/javascript" src="../js/Detail.js"></script>
+</head>
+<body>
+    <h2>詳細画面</h2>
+    <form class="orderFormClass" id="orderFormId" enctype="multipart/form-data">
+        <!--取引先(クライアント)IDは読み取り専用(readonly)にする。-->
+        <div class="clientIdAreaClass clearfix" id="clientIdAreaId">
+            <div class="labelArea">
+                <label class="labelClass">取引先会社ID</label>
+            </div>
+            <div class="clientIdInputArea">
+                <label class="clientIdInputLabelClass" name="clientIdInputLabelName" id="clientIdLabelInput">
+                    <!--<input type="la" class="clientIdInputClass" id="clientIdInput"/>-->
+                </label>
+            </div>
+        </div>
+        <!--注文IDIDは読み取り専用(readonly)にする。-->
+        <div class="orderIdAreaClass clearfix" id="orderIdAreaId">
+            <div class="labelArea">
+                <label class="labelClass">注文ID</label>
+            </div>
+            <div class="orderIdInputArea">
+                <label class="orderIdInputClass" name="orderIdInputName" id="orderIdInput"></label>
+            </div>
+        </div>
+        <!--会社名は読み取り専用(readonly)にする-->
+        <div class="clientNameAreaClass clearfix" id="clientNameAreaId">
+            <div class="labelArea">
+                <label class="labelClass">会社名</label>
+            </div>
+            <div class="clientNameInputArea">
+                <label class="clientNameInputClass" name="clientName" id="clientNameInput"></label>
+            </div>
+        </div>
+        <!--部署名-->
+        <div class="departmentAreaClass clearfix" id="departmentAreaId">
+            <div class="labelArea">
+                <label class="labelClass">部署名</label>
+            </div>
+            <div class="departmentInputArea">
+                <label class="departmentInputClass" name="department" id="departmentInput"></label>
+            </div>
+        </div>
+        <!--郵便番号-->
+        <div class="postAreaClass clearfix" id="postAreaId">
+            <div class="labelArea">
+                <label class="labelClass">郵便番号</label>
+            </div>
+            <div class="postInputArea">
+                <label class="postInputClass" name="post" id="postInput"></label>
+            </div>
+        </div>
+        <!--住所-->
+        <div class="postAddressClass clearfix" id="postAddressId">
+            <div class="labelArea">
+                <label class="labelClass">住所</label>
+            </div>
+            <div class="postAddressInpuArea">
+                <label class="postAddressInputClass" name="postAddress" id="postAddressInput"></label>
+            </div>
+        </div>
+        <!--TEL-->
+        <div class="telClass clearfix" id="telId">
+            <div class="labelArea">
+                <label class="labelClass">TEL</label>
+            </div>
+            <div class="telInputArea">
+                <label class="telInputClass" name="tel" id="telInput"></label>
+            </div>
+        </div>
+        <!--FAX-->
+        <div class="faxClass clearfix" id="faxId">
+            <div class="labelArea">
+                <label class="labelClass">FAX</label>
+            </div>
+            <div class="faxInputArea">
+                <label class="faxInputClass" name="fax" id="faxInput"></label>
+            </div>
+        </div>
+        <!--E-mail-->
+        <div class="emailClass clearfix" id="emailId">
+            <div class="labelArea">
+                <label class="labelClass">E-mail</label>
+            </div>
+            <div class="emailInputArea">
+                <label class="emailInputClass" name="email" id="emailInput"></label>
+            </div>
+        </div>
+        <!--購入品目1-->
+        <fieldset class="orderGroup clearfix">
+            <!--購入品目名1-->
+            <div class="order1Class clearfix" id="order1Id">
+                <div class="labelArea">
+                    <label class="labelClass">購入品目1</label>
+                </div>
+                <div class="order1InputArea">
+                    <label class="order1InputClass" name="order1" id="order1Input"></label>
+                </div>
+            </div>
+            <!--購入品目1の単価-->
+            <div class="order1Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">単価1</label>
+                </div>
+                <div class="order1priceInputArea">
+                    <label class="order1priceInputClass" name="order1price" id="order1priceInput"></label>
+                </div>
+            </div>
+            <!--購入品目1の注文数-->
+            <div class="order1Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">注文数1</label>
+                </div>
+                <div class="order1NumInputArea">
+                    <label class="order1NumInputClass" name="order1Num" id="order1NumInput"></label>
+                </div>
+            </div>
+        </fieldset>
+        <!--購入品目2-->
+        <fieldset class="orderGroup clearfix">
+            <!--購入品目名2-->
+            <div class="order2Class clearfix" id="order2Id">
+                <div class="labelArea">
+                    <label class="labelClass">購入品目2</label>
+                </div>
+                <div class="order2InputArea">
+                    <label class="order2InputClass" name="order2" id="order2Input"></label>
+                </div>
+            </div>
+            <!--購入品目2の単価-->
+            <div class="order2Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">単価2</label>
+                </div>
+                <div class="order2priceInputArea">
+                    <label class="order2priceInputClass" name="order2price" id="order2priceInput"></label>
+                </div>
+            </div>
+            <!--購入品目2の注文数-->
+            <div class="order2Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">注文数2</label>
+                </div>
+                <div class="order2NumInputArea">
+                    <label class="order2NumInputClass" name="order2Num" id="order2NumInput"></label>
+                </div>
+            </div>
+        </fieldset>
+        <!--購入品目3-->
+        <fieldset class="orderGroup">
+            <!--購入品目名3-->
+            <div class="order3Class clearfix" id="order3Id">
+                <div class="labelArea">
+                    <label class="labelClass">購入品目3</label>
+                </div>
+                <div class="order3InputArea">
+                    <label class="order3InputClass" name="order3" id="order3Input"></label>
+                </div>
+            </div>
+            <!--購入品目3の単価-->
+            <div class="order3Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">単価3</label>
+                </div>
+                <div class="order3priceInputArea">
+                    <label class="order3priceInputClass" name="order3price" id="order3priceInput"></label>
+                </div>
+            </div>
+            <!--購入品目3の注文数-->
+            <div class="order3Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">注文数3</label>
+                </div>
+                <div class="order3NumInputArea">
+                    <label class="order3NumInputClass" name="order3Num" id="order3NumInput"></label>
+                </div>
+            </div>
+        </fieldset>
+        <!--購入品目4-->
+        <fieldset class="orderGroup clearfix">
+            <!--購入品目名4-->
+            <div class="order4Class clearfix" id="order4Id">
+                <div class="labelArea">
+                    <label class="labelClass">購入品目4</label>
+                </div>
+                <div class="order4InputArea">
+                    <label class="order4InputClass" name="order4" id="order4Input"></label>
+                </div>
+            </div>
+            <!--購入品目4の単価-->
+            <div class="order4Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">単価4</label>
+                </div>
+                <div class="order4priceInputArea">
+                    <label class="order4priceInputClass" name="order4price" id="order4priceInput"></label>
+                </div>
+            </div>
+            <!--購入品目4の注文数-->
+            <div class="order4Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">注文数4</label>
+                </div>
+                <div class="order4NumInputArea">
+                    <label class="order4NumInputClass" name="order4Num" id="order4NumInput"></label>
+                </div>
+            </div>
+        </fieldset>
+        <!--購入品目5-->
+        <fieldset class="orderGroup clearfix">
+            <!--購入品目名5-->
+            <div class="order5Class clearfix" id="order5Id">
+                <div class="labelArea">
+                    <label class="labelClass">購入品目5</label>
+                </div>
+                <div class="order5InputArea">
+                    <label class="order5InputClass" name="order5" id="order5Input"></label>
+                </div>
+            </div>
+            <!--購入品目5の単価-->
+            <div class="order5Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">単価5</label>
+                </div>
+                <div class="order5priceInputArea">
+                    <label class="order5priceInputClass" name="order5price" id="order5priceInput"></label>
+                </div>
+            </div>
+            <!--購入品目5の注文数-->
+            <div class="order5Class clearfix">
+                <div class="labelArea">
+                    <label class="labelClass">注文数5</label>
+                </div>
+                <div class="order5NumInputArea">
+                    <label class="order5NumInputClass" name="order5Num" id="order5NumInput"></label>
+                </div>
+            </div>
+        </fieldset>
+        <!--発注日-->
+        <div class="orderDateClass clearfix" id="orderDateId">
+            <div class="labelArea">
+                <label class="labelClass">発注日</label>
+            </div>
+            <div class="orderDateInputArea">
+                <label class="orderDateInputClass" name="orderDate" id="orderDateInput"></label>
+            </div>
+        </div>
+        <!--納品予定日-->
+        <div class="deliveryDateClass clearfix" id="deliveryDateId">
+            <div class="labelArea">
+                <label class="labelClass">納品予定日</label>
+            </div>
+            <div class="deliveryDateInputArea">
+                <label class="deliveryDateInputClass" name="deliveryDate" id="deliveryDateInput"></label>
+            </div>
+        </div>
+        <!--合計金額-->
+        <div class="totalClass clearfix" id="totalId">
+            <div class="labelArea">
+                <label class="labelClass">合計金額</label>
+            </div>
+            <div class="totalInputArea">
+                <label class="totalInputClass" name="total" id="totalInput"></label>
+            </div>
+        </div>
+    </form>
+    <!--入力内容をリセットボタン-->
+    <div class="resetBtnSection clearfix">
+        <div class="resetBtnArea">
+            <button type="button" class="btn-danger" id="resetBtn">入力内容をリセットする</button>
+        </div>
+    </div>
+    <!--登録確認画面へ進むボタン-->
+    <div class="confirmBtnSection clearfix">
+        <div class="confirmBtnArea">
+            <button type="button" class="btn-primary" id="confirmBtn">確認画面に進む</button>
+        </div>
+    </div>
+</body>
+</html>
