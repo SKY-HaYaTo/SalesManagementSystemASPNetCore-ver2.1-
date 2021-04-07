@@ -15,6 +15,11 @@ using ClosedXML;
 using Spire.Xls;
 using System.IO;
 using ClosedXML.Excel;
+using Microsoft.Office.Interop.Excel;
+using Worksheet = Spire.Xls.Worksheet;
+using Workbook = Spire.Xls.Workbook;
+using PivotCache = Spire.Xls.PivotCache;
+using PivotTable = Spire.Xls.PivotTable;
 
 namespace SalesManagementSystem.Controllers
 {
@@ -272,12 +277,36 @@ namespace SalesManagementSystem.Controllers
             sheet2.Name = "Pivot Table";
 
             // ----------------【ピボットテーブルを作成する】----------------
-            CellRange dataRange = sheet.Range["A1:Q4"];
+            CellRange dataRange = sheet.Range["A2:Q4"];
             PivotCache cache = workbook.PivotCaches.Add(dataRange);
-            PivotTable pt = sheet2.PivotTables.Add("Pivot Table",sheet.Range["A1"],cache);
+            PivotTable pt = sheet2.PivotTables.Add("Pivot Table",sheet.Range["A2"],cache);
 
+            // ----------------【行ラベルを定義する】----------------
+            var r1 = pt.PivotFields["会社名"];
+            r1.Axis = AxisTypes.Row;
+            pt.Options.RowHeaderCaption = "会社名";
+            
+            pt.DataFields.Add(pt.PivotFields["合計金額"], "合計金額", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名1の価格"], "合計/購入品目名1の価格", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名1の注文数"], "合計/購入品目名1の注文数", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名2の価格"], "合計/購入品目名2の価格", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名2の注文数"], "合計/購入品目名2の注文数", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名3の価格"], "合計/購入品目名3の価格", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名3の注文数"], "合計/購入品目名3の注文数", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名4の価格"], "合計/購入品目名4の価格", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名4の注文数"], "合計/購入品目名4の注文数", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名5の価格"], "合計/購入品目名5の価格", SubtotalTypes.Sum);
+            pt.DataFields.Add(pt.PivotFields["購入品目名5の注文数"], "合計/購入品目名5の注文数", SubtotalTypes.Sum);
+            
+            pt.BuiltInStyle = PivotBuiltInStyles.PivotStyleMedium12;
 
+            //下記のディレクトリに保存する。
+            workbook.SaveToFile("C:\\Users\\Owner\\Desktop\\PivotTable.xlsx", ExcelVersion.Version2010);
+            
         }
+
+
+
 
         //////////////////////////////////【ピボットテーブル用に売上表を加工する】////////////////////////////////////////////////////////
 
@@ -303,47 +332,47 @@ namespace SalesManagementSystem.Controllers
 
                 sheet.Cell("C1").Value = "購入品目名1"; //【ヘッダー】購入品目名1
                 sheet.Range("C1:E1").Merge().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;//【重要ポイント】セル範囲に使う「A1:A2」はコロン間の間隔を空けないこと。中央寄せに設定する。
-                sheet.Cell("C2").Value = "品目名"; //【ヘッダー】品目名
+                sheet.Cell("C2").Value = "購入品目名1"; //【ヘッダー】品目名
                 sheet.Cell("C2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("D2").Value = "価格"; //【ヘッダー】価格
+                sheet.Cell("D2").Value = "購入品目名1の価格"; //【ヘッダー】価格
                 sheet.Cell("D2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("E2").Value = "注文数"; //【ヘッダー】注文数
+                sheet.Cell("E2").Value = "購入品目名1の注文数"; //【ヘッダー】注文数
                 sheet.Cell("E2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
                 sheet.Cell("F1").Value = "購入品目名2"; //【ヘッダー】購入品目名2
                 sheet.Range("F1:H1").Merge().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;//【重要ポイント】セル範囲に使う「A1:A2」はコロン間の間隔を空けないこと。中央寄せに設定する。
-                sheet.Cell("F2").Value = "品目名"; //【ヘッダー】品目名
+                sheet.Cell("F2").Value = "購入品目名2"; //【ヘッダー】品目名
                 sheet.Cell("F2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("G2").Value = "価格"; //【ヘッダー】価格
+                sheet.Cell("G2").Value = "購入品目名2の価格"; //【ヘッダー】価格
                 sheet.Cell("G2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("H2").Value = "注文数"; //【ヘッダー】注文数
+                sheet.Cell("H2").Value = "購入品目名2の注文数"; //【ヘッダー】注文数
                 sheet.Cell("H2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
                 sheet.Cell("I1").Value = "購入品目名3"; //【ヘッダー】購入品目名3
                 sheet.Range("I1:K1").Merge().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;//【重要ポイント】セル範囲に使う「A1:A2」はコロン間の間隔を空けないこと。中央寄せに設定する。
-                sheet.Cell("I2").Value = "品目名"; //【ヘッダー】品目名
+                sheet.Cell("I2").Value = "購入品目名3"; //【ヘッダー】品目名
                 sheet.Cell("I2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("J2").Value = "価格"; //【ヘッダー】価格
+                sheet.Cell("J2").Value = "購入品目名3の価格"; //【ヘッダー】価格
                 sheet.Cell("J2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("K2").Value = "注文数"; //【ヘッダー】注文数
+                sheet.Cell("K2").Value = "購入品目名3の注文数"; //【ヘッダー】注文数
                 sheet.Cell("K2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
                 sheet.Cell("L1").Value = "購入品目名4"; //【ヘッダー】購入品目名4
                 sheet.Range("L1:N1").Merge().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;//【重要ポイント】セル範囲に使う「A1:A2」はコロン間の間隔を空けないこと。中央寄せに設定する。
-                sheet.Cell("L2").Value = "品目名"; //【ヘッダー】品目名
+                sheet.Cell("L2").Value = "購入品目名4"; //【ヘッダー】品目名
                 sheet.Cell("L2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("M2").Value = "価格"; //【ヘッダー】価格
+                sheet.Cell("M2").Value = "購入品目名4の価格"; //【ヘッダー】価格
                 sheet.Cell("M2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("N2").Value = "注文数"; //【ヘッダー】注文数
+                sheet.Cell("N2").Value = "購入品目名4の注文数"; //【ヘッダー】注文数
                 sheet.Cell("N2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
                 sheet.Cell("O1").Value = "購入品目名5"; //【ヘッダー】購入品目名5
                 sheet.Range("O1:Q1").Merge().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;//【重要ポイント】セル範囲に使う「A1:A2」はコロン間の間隔を空けないこと。中央寄せに設定する。
-                sheet.Cell("O2").Value = "品目名"; //【ヘッダー】品目名
+                sheet.Cell("O2").Value = "購入品目名5"; //【ヘッダー】品目名
                 sheet.Cell("O2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("P2").Value = "価格"; //【ヘッダー】価格
+                sheet.Cell("P2").Value = "購入品目名5の価格"; //【ヘッダー】価格
                 sheet.Cell("P2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                sheet.Cell("Q2").Value = "注文数"; //【ヘッダー】注文数
+                sheet.Cell("Q2").Value = "購入品目名5の注文数"; //【ヘッダー】注文数
                 sheet.Cell("Q2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
                 List<OrderInputEntity> salesList = new List<OrderInputEntity>();
